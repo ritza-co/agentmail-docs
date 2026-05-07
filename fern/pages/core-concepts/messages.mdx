@@ -9,9 +9,9 @@ description: Learn how to send, receive, and manage emails as Message objects wi
 
 In the AgentMail ecosystem, a `Message` is the API-first representation of a traditional email. It's a structured object containing all the elements you'd expect: a sender, recipients, a subject line, and the body of the email.
 
-Every `Message` lives inside a `Thread` to keep conversations organized. When you send a new `Message`, a new `Thread` is created. When you reply, the new `Message` is added to the existing `Thread`. Literally a normal email thread as we know it.
+Every `Message` lives inside a `Thread` to keep conversations organized. When you send a new `Message`, a new `Thread` is created. When you reply, the new `Message` is added to the existing `Thread`. (It's literally a normal email thread as we know it.)
 
-One of the powerful features of AgentMail is the ability to seamlessly include humans in agent-driven conversations. You can `cc` or `bcc` a real person on any message your agent sends, creating a "human-in-the-loop" workflow for oversight, escalations, or quality assurance.
+One of the powerful features AgentMail offers is the ability to seamlessly include humans in agent-driven conversations. You can `cc` or `bcc` a real person on any message your agent sends, creating a "human-in-the-loop" workflow for oversight, escalations, or quality assurance.
 
 ## Core Capabilities
 
@@ -38,7 +38,7 @@ const client = new AgentMailClient({ apiKey: "YOUR_API_KEY" });
 
 ### 2. Send a New `Message`
 
-To start a new conversation, you can send a `Message` from one of your inboxes. This action will create a new `Thread` and return the `Message` object.
+To start a new conversation, send a `Message` from one of your inboxes. This action creates a new `Thread` and returns the `Message` object.
 
 <CodeBlocks>
 ```python
@@ -94,7 +94,7 @@ agentmail inboxes:messages send \
 </CodeBlocks>
 
 <Warning>
-  **Recipient limit:** Each send or reply supports a maximum of **50 recipients** across the combined total of `to`, `cc`, and `bcc`. If you exceed this limit, the API will return an error.
+  **Recipient Limit:** Each send or reply supports a maximum of **50 recipients** across the combined total of `to`, `cc`, and `bcc`. If you exceed this limit, the API will return an error.
 </Warning>
 
 ### 3. List `Messages` in an `Inbox`
@@ -175,9 +175,9 @@ agentmail inboxes:messages reply \
 </CodeBlocks>
 
 <Callout>
-  Note that the `inbox_id` in reply is different from send, in that this is the
+  Note that the `inbox_id` in reply is different from send, in that it is the
   `inbox_id` we are sending FROM. Remember we can have potentially infinite
-  `Inboxes` to send from, so we need to tell the api which one we are sending
+  `Inboxes` to send from, so we need to tell the API which one we're sending
   from.
 </Callout>
 ### 5. Get a `Message`
@@ -210,7 +210,7 @@ agentmail inboxes:messages get \
 ```
 </CodeBlocks>
 
-When receiving replies or forwards, use `extracted_text` or `extracted_html` for just the new content—quoted history is stripped automatically.
+When receiving replies or forwards, use `extracted_text` or `extracted_html` to view just the new content — quoted history is stripped automatically.
 
 ## Copy for Cursor or Claude
 
@@ -320,7 +320,7 @@ When sending a `Message`, you can provide the body in two formats: `text` for a 
 
 ## "Why Both Text and HTML?"
 
-Most modern email clients will display the HTML version, not all of them can render HTML -- a text fallback makes sure your message is displayed regardless. Furthermore it significantly improves deliverability.
+Most modern email clients will display the HTML version, but not all of them can render HTML — a text fallback ensures your message is displayed regardless. Furthermore it significantly improves deliverability.
 
 #### Styling with CSS
 
@@ -458,17 +458,17 @@ Here is an example of a well-structured and styled HTML header:
 
 ## A Note on `text` Availability
 
-The `text` and `preview` fields on a received `Message` are derived from the email's plain-text (`text/plain`) MIME part. Some email clients — particularly Gmail and Outlook — send forwarded emails as HTML-only, with no plain-text part. In these cases, `text` and `preview` will be absent.
+The `text` and `preview` fields on a received `Message` are derived from the email's plain-text (`text/plain`) MIME part. Some email clients — particularly Gmail and Outlook — send forwarded emails as HTML-only, with no plain-text part. In these cases, `text` and `preview` are absent.
 
 When processing incoming messages, always treat `html` as the primary content source and `text` as optional.
 
 ## Receiving `Messages`
 
 <Warning>
-**Inbound emails are checked for SPF, DKIM, and DMARC authentication.** AgentMail drops emails when authentication headers are present and explicitly fail. When authentication headers are missing, AgentMail still processes the email and labels it `unauthenticated`. Subscribe to the `message.received.unauthenticated` event to monitor these messages. See [Why are my emails not showing up?](/knowledge-base/inbound-emails-missing) for details.
+**Inbound emails are checked for SPF, DKIM, and DMARC authentication.** AgentMail drops emails when authentication headers are present and explicitly fail. When authentication headers are missing, AgentMail still processes the email and labels it `unauthenticated`. Subscribe to the `message.received.unauthenticated` event to monitor these messages. See [Why Are My Emails Not Showing Up?](/knowledge-base/inbound-emails-missing) for more details.
 </Warning>
 
-While you can periodically list `Messages` to check for new emails, the most efficient way to handle incoming `Messages` for your agents is with `Webhooks`. By configuring a `Webhook` endpoint, AgentMail can notify your application/agent in real-time as soon as a new `Message` arrives, so you can take action on them.
+While you can periodically list `Messages` to check for new emails, the most efficient way to handle incoming `Messages` for your agents is with `Webhooks`. By configuring a `Webhook` endpoint, AgentMail can notify your application or agent in real-time, as soon as a new `Message` arrives, so you can take action on it.
 
 <CardGroup>
   <Card
@@ -482,7 +482,7 @@ While you can periodically list `Messages` to check for new emails, the most eff
 
 ### Marking Messages as Read
 
-AgentMail doesn't have a dedicated "mark as read" endpoint — instead, you use [Labels](/labels) to track read/unread state. This is a common pattern to prevent your agent from reprocessing the same emails.
+AgentMail doesn't have a dedicated "mark as read" endpoint. Instead, you can use [Labels](/labels) to track read and unread state. This is a common pattern to prevent your agent from reprocessing the same emails.
 
 <CodeBlocks>
 ```python title="Python"
@@ -535,6 +535,6 @@ agentmail inboxes:messages list \
 </CodeBlocks>
 
 <Callout intent="info" title="Avoiding duplicate processing">
-If your agent uses webhooks, mark each message as `read` (or `processed`) immediately after handling it. Then, if your agent restarts or reprocesses, filter by `labels=["unread"]` to skip messages that have already been handled.
+If your agent uses webhooks, mark each message as `read` (or `processed`) immediately after handling it. Then, if your agent restarts or reprocesses, you can filter by `labels=["unread"]` to skip messages that have already been handled.
 </Callout>
 ````
