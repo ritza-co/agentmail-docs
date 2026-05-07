@@ -5,7 +5,7 @@ slug: messages
 description: Learn how to send, receive, and manage emails as Message objects with the AgentMail API.
 ---
 
-## What is a Message?
+## What Is a Message?
 
 In the AgentMail ecosystem, a `Message` is the API-first representation of a traditional email. It's a structured object containing all the elements you'd expect: a sender, recipients, a subject line, and the body of the email.
 
@@ -212,7 +212,7 @@ agentmail inboxes:messages get \
 
 When receiving replies or forwards, use `extracted_text` or `extracted_html` for just the new content—quoted history is stripped automatically.
 
-## Copy for Cursor / Claude
+## Copy for Cursor or Claude
 
 Copy one of the blocks below into Cursor or Claude for complete Messages API knowledge in one shot.
 
@@ -318,7 +318,7 @@ When sending a `Message`, you can provide the body in two formats: `text` for a 
   **Best Practice**: Always send both `text` and `html` versions.
 </Tip>
 
-## "Why both text and HTML?"
+## "Why Both Text and HTML?"
 
 Most modern email clients will display the HTML version, not all of them can render HTML -- a text fallback makes sure your message is displayed regardless. Furthermore it significantly improves deliverability.
 

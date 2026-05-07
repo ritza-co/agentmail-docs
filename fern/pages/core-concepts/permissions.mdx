@@ -5,7 +5,7 @@ slug: permissions
 description: Learn how to configure fine-grained permissions on API keys to restrict access to specific resources and operations.
 ---
 
-## What are Permissions?
+## What Are Permissions?
 
 `Permissions` let you restrict what an API key can do. By default, an API key has full access within its scope (organization, pod, or inbox). When you provide a `permissions` object, it acts as a **whitelist**: only the permissions you explicitly set to `true` are granted. Everything else is denied.
 
@@ -13,7 +13,7 @@ This gives you fine-grained control over which resources and operations each key
 
 ## How Permissions Work
 
-### Whitelist model
+### Whitelist Model
 
 When you create an API key with a `permissions` object, it switches from "full access" mode to "whitelist" mode:
 
@@ -24,11 +24,11 @@ When you create an API key with a `permissions` object, it switches from "full a
   Existing API keys without a `permissions` field continue to work exactly as before with full access. The whitelist only activates when you explicitly provide the `permissions` object.
 </Callout>
 
-### Intersection with scope
+### Intersection with Scope
 
 Permissions are intersected with the key's scope. A key scoped to a single inbox cannot gain organization-level capabilities (like `inbox_create` or `domain_create`) even if those permissions are set to `true`. The effective permissions are always the intersection of what the scope allows and what the `permissions` object grants.
 
-### Privilege escalation protection
+### Privilege Escalation Protection
 
 A restricted API key cannot create a child key with more permissions than itself. When creating a new key, the child's permissions are automatically constrained to the parent's effective permissions. This prevents privilege escalation through key creation.
 
@@ -134,7 +134,7 @@ A restricted API key cannot create a child key with more permissions than itself
 
 ## Code Examples
 
-### Read-only key
+### Read-Only Key
 
 Create an API key that can read all resources but cannot create, update, or delete anything.
 
@@ -215,7 +215,7 @@ agentmail api-keys create \
 ```
 </CodeBlocks>
 
-### No-spam key
+### No-Spam Key
 
 Create a key with full access but block visibility into spam, blocked, and trash content. This is useful for agent-facing keys where you want to prevent the agent from processing unwanted email.
 
@@ -350,7 +350,7 @@ agentmail api-keys create \
 ```
 </CodeBlocks>
 
-## Copy for Cursor / Claude
+## Copy for Cursor or Claude
 
 Copy one of the blocks below into Cursor or Claude for complete Permissions API knowledge in one shot.
 

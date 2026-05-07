@@ -3,7 +3,7 @@ title: Pods
 description: Learn how to use pods for multi-tenant email management
 ---
 
-## What are Pods?
+## What Are Pods?
 
 Pods are an isolated abstraction that sits between your **organization** and your **inboxes**, providing a method to segment and organize email infrastructure for multi-tenant applications. If you're building a service that offers email functionality to your customers, pods are your key to ensure customer resource isolation.
 
@@ -57,7 +57,7 @@ As a basis, here are a couple of logistical stuff that happens on the API side w
 - When you sign up, you are automatically created a `Default Pod`, and all resources created whether its `Inboxes` or `Domains` all are associated with this `Default Pod`.
 - You cannot delete a `Pod` that has existing children resources. Make sure to delete any existing `Inboxes` or `Domains` before deleting a `Pod`.
 
-### What You Can Do With Pods
+### What You Can Do with Pods
 
 #### Creating Resources
 
@@ -85,10 +85,10 @@ These resources are automatically associated with the pod and inherit its isolat
 
 You can list the following resources **scoped to** a pod:
 
-- **Inboxes** (`GET /pods/{pod_id}/inboxes`) - View all inboxes in a pod
-- **Threads** (`GET /pods/{pod_id}/threads`) - View all email conversations across all inboxes in the pod
-- **Drafts** (`GET /pods/{pod_id}/drafts`) - View all draft emails across all inboxes in the pod
-- **Domains** (`GET /pods/{pod_id}/domains`) - View all custom domains in the pod
+- **Inboxes** (`GET /pods/{pod_id}/inboxes`) - View all the inboxes in a pod.
+- **Threads** (`GET /pods/{pod_id}/threads`) - View all email conversations across all inboxes in the pod.
+- **Drafts** (`GET /pods/{pod_id}/drafts`) - View all draft emails across all inboxes in the pod.
+- **Domains** (`GET /pods/{pod_id}/domains`) - View all custom domains in the pod.
 
 This gives you a unified view of all activity within a customer's workspace, making it easy to build features like:
 
@@ -96,7 +96,7 @@ This gives you a unified view of all activity within a customer's workspace, mak
 - "List all threads across all of Customer Y's team inboxes"
 - "Display all pending drafts for Customer Z"
 
-## Copy for Cursor / Claude
+## Copy for Cursor or Claude
 
 Copy one of the blocks below into Cursor or Claude for complete Pods API knowledge in one shot.
 
@@ -192,7 +192,7 @@ async function offboardCustomer(podId: string) {
   individual threads or messages.
 </Info>
 
-**What's NOT Isolated to a Pod:**
+**What's NOT isolated to a pod:**
 
 - Organization-level API keys (these can access any resources in any pod). Use [pod-scoped API keys](/multi-tenancy#pod-scoped-keys) to restrict access to a single pod, or [inbox-scoped API keys](/multi-tenancy#inbox-scoped-keys) to restrict access to a single inbox.
 
@@ -258,29 +258,29 @@ Pod: "Marketing-Agent"
 
 ## FAQ
 
-<Accordion title="Can inboxes communicate between pods?">
+<Accordion title="Can Inboxes Communicate Between Pods?">
   Yes! Inboxes in different pods can send and receive emails from each other
   just like any other email addresses. Pods only provide organizational
   isolation, not network isolation.
 </Accordion>
 
-<Accordion title="Can I move an inbox from one pod to another?">
+<Accordion title="Can I Move an Inbox from One Pod to Another?">
   No, inboxes cannot be moved between pods. You will need to create a new inbox
   in the pod you want.
 </Accordion>
 
-<Accordion title="How many pods can I create?">
+<Accordion title="How Many Pods Can I Create?">
   There's no hard limit on the number of pods. You can create as many as you
   need for your customers.
 </Accordion>
 
-<Accordion title="Do I need to use pods?">
+<Accordion title="Do I Need To Use Pods?">
   Pods are optional but highly recommended for multi-tenant applications. If
   you're only managing email for your own organization, you can work directly
   with inboxes without creating pods.
 </Accordion>
 
-<Accordion title="Can I set custom permissions per pod?">
+<Accordion title="Can I Set Custom Permissions per Pod?">
   Yes! You can create pod-scoped API keys that are restricted to a single pod, or
   inbox-scoped API keys that are restricted to a single inbox within a pod. See the
   [Multi-Tenancy guide](/multi-tenancy#scoped-api-keys) for details on provisioning scoped keys.

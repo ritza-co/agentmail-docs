@@ -5,7 +5,7 @@ slug: lists
 description: Learn how to use Lists to control which email addresses and domains your agents can send to or receive from.
 ---
 
-## What are Lists?
+## What Are Lists?
 
 `Lists` allow you to filter emails by allowing or blocking specific email addresses or domains. There are six list types based on two dimensions:
 
@@ -33,7 +33,7 @@ Lists can be scoped at three levels. A narrower scope overrides a broader one:
 
 When evaluating whether to allow or block a message, AgentMail checks the most specific scope first. If an inbox-level list has a match, pod and org lists are not checked.
 
-## Reply lists
+## Reply Lists
 
 The `reply` direction handles inbound emails that are replies to previous outbound messages. When an inbound email arrives, AgentMail checks the `In-Reply-To` header to determine whether it is a reply:
 
@@ -42,9 +42,9 @@ The `reply` direction handles inbound emails that are replies to previous outbou
 
 The two branches are completely separate. By default, when reply lists are empty, all replies are allowed. You can restrict replies by populating reply allow or reply block lists.
 
-## SDK examples
+## SDK Examples
 
-### List entries
+### List Entries
 
 Retrieve entries from a list with optional pagination.
 
@@ -66,7 +66,7 @@ agentmail lists list \
 ```
 </CodeBlocks>
 
-### Create entry
+### Create Entry
 
 Add an email address or domain to a list. The `reason` parameter is optional and available on block lists.
 
@@ -103,7 +103,7 @@ agentmail lists create \
 ```
 </CodeBlocks>
 
-### Get entry
+### Get Entry
 
 Retrieve a specific entry from a list by its email address or domain.
 
@@ -125,7 +125,7 @@ agentmail lists get \
 ```
 </CodeBlocks>
 
-### Delete entry
+### Delete Entry
 
 Remove an entry from a list.
 
@@ -147,7 +147,7 @@ agentmail lists delete \
 ```
 </CodeBlocks>
 
-### Inbox-scoped lists
+### Inbox-Scoped Lists
 
 Manage lists for a specific inbox. The same operations are available at the inbox level.
 
@@ -158,7 +158,7 @@ client.inboxes.lists.create(
     "inbox_id", "receive", "allow", entry="vip@example.com"
 )
 
-# List inbox-level entries
+# List Inbox-Level Entries
 entries = client.inboxes.lists.list("inbox_id", "receive", "allow")
 ```
 
@@ -188,7 +188,7 @@ agentmail inboxes:lists list \
 ```
 </CodeBlocks>
 
-### Reply lists
+### Reply Lists
 
 Control which addresses can send replies to an inbox's outbound messages.
 
@@ -212,7 +212,7 @@ agentmail lists create \
 ```
 </CodeBlocks>
 
-## Copy for Cursor / Claude
+## Copy for Cursor or Claude
 
 Copy one of the blocks below into Cursor or Claude for complete Lists API knowledge in one shot.
 
