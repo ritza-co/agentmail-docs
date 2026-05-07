@@ -31,7 +31,7 @@ Lists can be scoped at three levels. A narrower scope overrides a broader one:
 - **Pod**: Applies to all inboxes in a pod. Manage with `client.pods.lists`.
 - **Inbox**: Applies to a single inbox. Manage with `client.inboxes.lists`.
 
-When evaluating whether to allow or block a message, AgentMail checks the most specific scope first. If an inbox-level list has a match, pod and org lists are not checked.
+When evaluating whether to allow or block a message, AgentMail checks the most specific scope first. If an inbox-level list has a match, the pod and org lists are not checked.
 
 ## Reply Lists
 
