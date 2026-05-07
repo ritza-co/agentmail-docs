@@ -5,20 +5,20 @@ slug: inboxes
 description: Learn how AgentMail Inboxes act as scalable, API-first email accounts for your agents.
 ---
 
-## What is an Inbox?
+## What Is an Inbox?
 
-People are used to the traditional Gmail limitations -- only having one inbox. That's of the past.
+People are used to the traditional Gmail limitations — like having only one inbox. That's a thing of the past.
 
 An `Inbox` is now a fully loaded, programmatically accessible API resource re-designed for the scale of AI Agents.
 
-Think of it as being similar to a Gmail or Outlook account, but built API-first. Each `Inbox` has a unique email address and serves as the primary resource your agent uses to send and receive emails, giving it a first-class identity on the internet.
+Think of it as similar to a Gmail or an Outlook account, but built API-first. Each `Inbox` has a unique email address and serves as the primary resource your agent uses to send and receive emails, giving it a first-class identity on the internet.
 
 Unlike traditional email providers that are designed for human scale, AgentMail `Inboxes` are built to scale horizontally. You can create tens, hundreds, or even thousands of `Inboxes` for your agents on demand.
 
 <Tip>
-  Psst! Rather than sending 1000 emails from 1 `Inbox`, sending 10 emails
+  Psst! Rather than sending 1,000 emails from one `Inbox`, sending 10 emails
   across 100 `Inboxes` actually improves deliverability! Read more about
-  optimizing for deliverability [here](/best-practices/email-deliverability)
+  optimizing for deliverability [here](/best-practices/email-deliverability).
 </Tip>
 
 ### The AgentMail Hierarchy
@@ -49,7 +49,7 @@ As the diagram below illustrates, your `organization` is the top-level container
   <Step title="Message">
     A `Message` is an individual email. It contains the content, sender,
     recipients, and any associated metadata or `Attachments`. You can cc humans
-    at any point in time to keep a "human-in-the-loop"
+    at any point in time to keep a "human-in-the-loop."
   </Step>
   <Step title="Attachment">
     An `Attachment` is a file that is sent along with a `Message`. You can
@@ -59,7 +59,7 @@ As the diagram below illustrates, your `organization` is the top-level container
 
 ## Core Capabilities
 
-Here at AgentMail we've now made an `Inbox` an API resource, meaning you can perform standard CRUD operations on it. Here are the core capabilities you'll use to manage your `Inboxes`.
+Here at AgentMail, we've now made an `Inbox` an API resource, meaning you can perform standard CRUD operations on it. Here are the core capabilities you'll use to manage your `Inboxes`.
 
 <CodeBlocks>
 
@@ -135,12 +135,12 @@ agentmail inboxes list
 
 <Tip>
   When creating an `Inbox`, the `username` and `domain` are optional. If you
-  don't provide them, AgentMail will generate a unique address for you using our
-  default domain. Check out our [guide on managing
+  don't provide them, AgentMail generates a unique address for you using our
+  default domain. Check out our [guide to managing
   domains](/guides/domains/managing-domains) to learn more.
 </Tip>
 
-## Inbox-scoped API keys
+## Inbox-Scoped API Keys
 
 You can create API keys that are restricted to a single inbox. An inbox-scoped key can only access that inbox's threads, messages, and drafts. This is useful when you want to give an agent or integration the minimum access it needs.
 
@@ -168,7 +168,7 @@ console.log(key.apiKey);
 
 See the [Multi-Tenancy guide](/multi-tenancy#inbox-scoped-keys) for more on scoped keys.
 
-## Copy for Cursor / Claude
+## Copy for Cursor or Claude
 
 Copy one of the blocks below into Cursor or Claude for complete Inboxes API knowledge in one shot.
 

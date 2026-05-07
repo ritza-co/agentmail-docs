@@ -3,9 +3,9 @@ title: Pods
 description: Learn how to use pods for multi-tenant email management
 ---
 
-## What are Pods?
+## What Are Pods?
 
-Pods are an isolated abstraction that sits between your **organization** and your **inboxes**, providing a method to segment and organize email infrastructure for multi-tenant applications. If you're building a service that offers email functionality to your customers, pods are your key to ensure customer resource isolation.
+Pods are an isolated abstraction that sits between your **organization** and your **inboxes**, providing a method for segmenting and organizing email infrastructure for multi-tenant applications. If you're building a service that offers email functionality to your customers, pods are your key to ensuring customer resource isolation.
 
 ### The Hierarchy
 
@@ -27,9 +27,9 @@ Organization (Your Business)
 
 **Pod**: Each of your customers
 
-- Create one pod per customer/tenant in your system
+- Create one pod per customer or tenant in your system
 - Pods provide complete isolation between your customers' data
-- All resources (inboxes, domains, threads, drafts) can be scoped to a pod
+- All resources (inboxes, domains, threads, and drafts) can be scoped to a pod
 
 **Inbox**: Individual email accounts within a pod
 
@@ -40,11 +40,11 @@ Organization (Your Business)
 
 ### Multi-Tenancy
 
-Pods enable you to offer AgentMail's email infrastructure to your own customers while maintaining strict data isolation. Here's how our customers use pods:
+Pods enable you to offer AgentMail's email infrastructure to your own customers while maintaining strict data isolation. Here's how our different customers use pods:
 
-**SaaS/Agency Platforms**: Create a pod for each customer account. Each customer gets their own isolated email workspace.
+**SaaS and Agency Platforms**: Create a pod for each customer account. Each customer gets their own isolated email workspace.
 
-**White-Label Email**: Offer email services under your own brand. Each end-user gets their own pod with complete data isolation.
+**White-Label Email**: Offer email services under your own brand. Each end user gets their own pod with complete data isolation.
 
 **AI Agent Platforms**: Give each AI agent with its own purpose its own pod with dedicated inboxes and domains.
 
@@ -52,43 +52,43 @@ Pods enable you to offer AgentMail's email infrastructure to your own customers 
 
 ### Pod Lifecycle
 
-As a basis, here are a couple of logistical stuff that happens on the API side when you create resources.
+As a basis, here is some logistical stuff that happens on the API side when you create resources.
 
-- When you sign up, you are automatically created a `Default Pod`, and all resources created whether its `Inboxes` or `Domains` all are associated with this `Default Pod`.
+- When you sign up, the API automatically creates you a `Default Pod`, and all the resources you create (whether they are  `Inboxes` or `Domains`) are associated with this `Default Pod`.
 - You cannot delete a `Pod` that has existing children resources. Make sure to delete any existing `Inboxes` or `Domains` before deleting a `Pod`.
 
-### What You Can Do With Pods
+### What You Can Do with Pods
 
 #### Creating Resources
 
-You can create the following resources **within** a pod:
+You can create the following resources *within* a pod:
 
 - **Inboxes**
 - **Domains**
 
 <Callout>
-  NOTE: as of now domains can only be either scoped to one pod, or all pods. I.E
+  NOTE: As of now, you can only scope domains either to one pod, or to all pods. I.E.,
   it is not possible to create a domain scoped to more than one but not all
   pods.
 </Callout>
 <Tip>
-  TIP: specify a `client_id` when creating a `Pod` so that you can decide how to
-  uniquely identify pods. That way you don't need to create a table mapping your
-  `organization_id`'s for your customers or segment of your business to our
-  `pod_id`'s you can just set the `client_id` as your internal id so you can
-  access the resource using a unique identifier determined by you!
+  TIP: Specify a `client_id` when creating a `Pod` so that you can decide how to
+  uniquely identify pods. That way, you don't need to create a table mapping every
+  `organization_id` (for your customers or segments of your business) to its
+  equivalent AgentMail `pod_id`. You can just set the `client_id` as your internal id,
+  so you can access the resource using a unique identifier determined by you!
 </Tip>
 
 These resources are automatically associated with the pod and inherit its isolation guarantees.
 
 #### Listing Resources
 
-You can list the following resources **scoped to** a pod:
+You can list the following resources *scoped to* a pod:
 
-- **Inboxes** (`GET /pods/{pod_id}/inboxes`) - View all inboxes in a pod
-- **Threads** (`GET /pods/{pod_id}/threads`) - View all email conversations across all inboxes in the pod
-- **Drafts** (`GET /pods/{pod_id}/drafts`) - View all draft emails across all inboxes in the pod
-- **Domains** (`GET /pods/{pod_id}/domains`) - View all custom domains in the pod
+- **Inboxes** (`GET /pods/{pod_id}/inboxes`) - View all the inboxes in a pod.
+- **Threads** (`GET /pods/{pod_id}/threads`) - View all email conversations across all inboxes in the pod.
+- **Drafts** (`GET /pods/{pod_id}/drafts`) - View all draft emails across all inboxes in the pod.
+- **Domains** (`GET /pods/{pod_id}/domains`) - View all custom domains in the pod.
 
 This gives you a unified view of all activity within a customer's workspace, making it easy to build features like:
 
@@ -96,7 +96,7 @@ This gives you a unified view of all activity within a customer's workspace, mak
 - "List all threads across all of Customer Y's team inboxes"
 - "Display all pending drafts for Customer Z"
 
-## Copy for Cursor / Claude
+## Copy for Cursor or Claude
 
 Copy one of the blocks below into Cursor or Claude for complete Pods API knowledge in one shot.
 
@@ -188,13 +188,15 @@ async function offboardCustomer(podId: string) {
 
 <Info>
   When you delete an inbox or domain, all associated data (messages, threads,
-  drafts) is automatically cleaned up. You don't need to manually delete
+  and drafts) is automatically cleaned up. You don't need to manually delete
   individual threads or messages.
 </Info>
 
-**What's NOT Isolated to a Pod:**
+**What's NOT isolated to a pod:**
 
-- Organization-level API keys (these can access any resources in any pod). Use [pod-scoped API keys](/multi-tenancy#pod-scoped-keys) to restrict access to a single pod, or [inbox-scoped API keys](/multi-tenancy#inbox-scoped-keys) to restrict access to a single inbox.
+- Organization-level API keys (these can access any resources in any pod).
+
+Use [pod-scoped API keys](/multi-tenancy#pod-scoped-keys) to restrict access to a single pod, or [inbox-scoped API keys](/multi-tenancy#inbox-scoped-keys) to restrict access to a single inbox.
 
 ## Common Patterns and Use Cases
 
@@ -258,29 +260,29 @@ Pod: "Marketing-Agent"
 
 ## FAQ
 
-<Accordion title="Can inboxes communicate between pods?">
-  Yes! Inboxes in different pods can send and receive emails from each other
-  just like any other email addresses. Pods only provide organizational
+<Accordion title="Can Inboxes Communicate Between Pods?">
+  Yes! Inboxes in different pods can send and receive emails to and from one
+  another, just like any other email addresses. Pods only provide organizational
   isolation, not network isolation.
 </Accordion>
 
-<Accordion title="Can I move an inbox from one pod to another?">
+<Accordion title="Can I Move an Inbox from One Pod to Another?">
   No, inboxes cannot be moved between pods. You will need to create a new inbox
   in the pod you want.
 </Accordion>
 
-<Accordion title="How many pods can I create?">
+<Accordion title="How Many Pods Can I Create?">
   There's no hard limit on the number of pods. You can create as many as you
   need for your customers.
 </Accordion>
 
-<Accordion title="Do I need to use pods?">
+<Accordion title="Do I Need To Use Pods?">
   Pods are optional but highly recommended for multi-tenant applications. If
   you're only managing email for your own organization, you can work directly
   with inboxes without creating pods.
 </Accordion>
 
-<Accordion title="Can I set custom permissions per pod?">
+<Accordion title="Can I Set Custom Permissions per Pod?">
   Yes! You can create pod-scoped API keys that are restricted to a single pod, or
   inbox-scoped API keys that are restricted to a single inbox within a pod. See the
   [Multi-Tenancy guide](/multi-tenancy#scoped-api-keys) for details on provisioning scoped keys.
@@ -288,5 +290,5 @@ Pod: "Marketing-Agent"
 
 ## Next Steps
 
-- Learn about [Inboxes](/inboxes) and how to create email accounts within pods
-- Explore [Domains](/custom-domains) to set up custom email domains for your pods
+- Learn about [Inboxes](/inboxes) and how to create email accounts within pods.
+- Explore [Domains](/custom-domains) to set up custom email domains for your pods.
