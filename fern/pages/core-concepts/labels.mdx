@@ -7,7 +7,7 @@ description: Learn how to use Labels to manage state, track campaigns, and filte
 
 ## What Are `Labels`?
 
-`Labels` are simple, string-based tags that you can attach to your `Messages` and `Threads`. They are the primary mechanism for organizing, categorizing, and managing the state of your conversations, whether its automatically bucketing threads into specific categories for your outbound campaign, to segmenting warm leads for your outreach, to categorizing inbound into low-ticket, medium-ticket, high-ticket customers.
+`Labels` are simple, string-based tags that you can attach to your `Messages` and `Threads`. They are the primary mechanism for organizing, categorizing, and managing the state of your conversations, whether you need to automatically bucket threads into specific categories for your outbound campaign, segment warm leads for your outreach, or categorize inbound into low-ticket, medium-ticket, and high-ticket customers.
 
 A `Message` can have multiple `Labels`, allowing you to create a flexible and powerful system for managing complex workflows.
 
@@ -23,8 +23,8 @@ By strategically applying `Labels`, you can build sophisticated agent systems. H
   </Step>
   <Step title="Campaign Tracking">
     When running outbound campaigns, tag every `Message` with a unique campaign
-    `Label` like `q4-2024-outreach`, or `mercor-campaign` and adding a second
-    tag as `warm-lead`. This allows you to easily filter for and analyze the
+    `Label`, like `q4-2024-outreach` or `mercor-campaign`, and add a second
+    tag such as `warm-lead`. This allows you to easily filter for and analyze the
     performance of that specific campaign later on.
   </Step>
   <Step title="Automated Triage">
@@ -35,7 +35,7 @@ By strategically applying `Labels`, you can build sophisticated agent systems. H
   <Step title="Read/Unread Tracking">
     Use `Labels` to track which `Messages` your agent has already processed.
     After handling a `Message`, add a `read` label and remove `unread`. Then
-    filter by `labels=["unread"]` to only fetch new messages — preventing your
+    filter by `labels=["unread"]` to fetch only new messages — preventing your
     agent from reprocessing the same emails. See [Marking Messages as Read](/messages#marking-messages-as-read) for code examples.
   </Step>
 </Steps>
@@ -242,9 +242,9 @@ Copy one of the blocks below into Cursor or Claude for complete Labels usage in 
 
 ## Best Practices
 
-- **Be Consistent:** Establish a clear and consistent naming convention for your labels (e.g., `kebab-case`, `snake_case`).
-- **Use Prefixes:** For state management, consider using prefixes like `status-pending` or `priority-high` to create an organized system.
-- **Don't Over-Label:** While you can add many `Labels`, aim for a concise and meaningful set to keep your system manageable.
+- **Be consistent:** Establish a clear and consistent naming convention for your labels (e.g., `kebab-case` or `snake_case`).
+- **Use prefixes:** For state management, consider using prefixes like `status-pending` or `priority-high` to create an organized system.
+- **Don't over-label:** While you can add many `Labels`, aim for a concise and meaningful set to keep your system manageable.
 
 <Callout title="Coming Soon: AI-Powered Auto-Labeling" intent="info">
   We are actively developing an AI-powered auto-labeling feature. Soon, your
