@@ -50,10 +50,10 @@ agentmail inboxes:threads list \
 
 ### Listing `Threads` Across an `Organization`
 
-This is one of AgentMail's most powerful features. By omitting the `inbox_id`, you can retrieve a list of `Threads` from **every `Inbox`** in your `Organization`. This org-wide querying capability is essential for building:
+This is one of AgentMail's most powerful features. By omitting the `inbox_id`, you can retrieve a list of `Threads` from *every `Inbox`* in your `Organization`. This org-wide querying capability is essential for building:
 
-- **Supervisor Agents:** An agent that monitors conversations from a fleet of other agents.
-- **Analytics Dashboards:** Building something where you need visibility across all inboxes across the organization
+- **Supervisor Agents:** Agents that monitor conversations from a fleet of other agents.
+- **Analytics Dashboards:** For when you need visibility across all inboxes within the organization.
 - **Advanced Workflows:** Systems that can route or escalate conversations between different agents with different permissions.
 
 <CodeBlocks>
@@ -87,7 +87,7 @@ agentmail threads list
 
 ### Getting a Single `Thread`
 
-You can also retrieve a single `Thread` by its ID. This will return the `Thread` object, which typically contains a list of all its associated `Messages` and their ID's. A common workflow is listing the messages in a thread and calling the `messages.reply` method on the last one.
+You can also retrieve a single `Thread` by its ID. This will return the `Thread` object, which typically contains a list of all its associated `Messages` and their IDs. A common workflow is listing the messages in a thread and calling the `messages.reply` method on the last one.
 
 <CodeBlocks>
 ```python
