@@ -7,15 +7,15 @@ description: Learn how to create, manage, and send Drafts to enable advanced age
 
 ## What Is a Draft?
 
-A `Draft` is an unsent `Message`. It's a resource that allows your agent to prepare the contents of an email—including recipients, a subject, a body, and `Attachments`—without sending it immediately.
+A `Draft` is an unsent `Message`. It's a resource that allows your agent to prepare the contents of an email – including recipients, a subject, a body, and `Attachments` – without sending it immediately.
 
-We know agent reliability is big these days--with `Drafts` you can have agents have ready-to-send emails and only with your permission it can send them off into the world.
+We know agent reliability is big these days. With `Drafts`, you can have an agent generate ready-to-send emails, but require your permission to send them off into the world.
 
 `Drafts` are a key component for building advanced agent workflows. They enable:
 
-- **Human-in-the-Loop Review:** An agent can create a `Draft` for a sensitive or important `Message`, which a human can then review and approve before it's sent.
-- **Scheduled Sending:** Your agent can create a `Draft` and then have a separate process send it at a specific time, such as during business hours for the recipient.
-- **Complex Composition:** For `Messages` that require multiple steps to build (e.g., fetching data from several sources, generating content), `Drafts` allow you to save the state of the email as it's being composed.
+- **Human-in-the-loop review:** An agent can create a `Draft` for a sensitive or important `Message`, which a human can then review and approve before it's sent.
+- **Scheduled sending:** Your agent can create a `Draft` and then have a separate process for sending it at a specific time, such as during business hours for the recipient.
+- **Complex composition:** For `Messages` that require multiple steps to build (e.g., fetching data from several sources, generating content), `Drafts` allow you to save the state of the email as it's being composed.
 
 ## The `Draft` Lifecycle
 
@@ -67,7 +67,7 @@ agentmail inboxes:drafts create \
 
 ### 2. Get a `Draft`
 
-Once a `Draft` is created, you can retrieve it by its ID
+Once a `Draft` has been created, you can retrieve it by its ID
 
 <CodeBlocks>
 ```python title="Python"
@@ -126,11 +126,11 @@ agentmail inboxes:drafts send \
 
 </CodeBlocks>
 
-Note that now we access it by message_id now because now its a message!!
+Note that you can now access it by `message_id` because it's now a message!!
 
 ## Scheduled Sending
 
-You can schedule a `Draft` to be sent automatically at a future time by passing the `send_at` field when creating or updating a `Draft`. AgentMail will automatically send it at the specified time—no cron jobs or polling required.
+You can schedule a `Draft` to be sent automatically at a future time by passing the `send_at` field when creating or updating a `Draft`. AgentMail will automatically send it at the specified time — no cron jobs or polling required.
 
 ### Schedule a `Draft`
 
@@ -190,7 +190,7 @@ agentmail inboxes:drafts create \
 
 ### Cancel or Reschedule
 
-To cancel a scheduled send, delete the `Draft`. To reschedule, update `send_at` with a new time.
+To cancel a scheduled send, delete the `Draft`. To reschedule a send, update `send_at` with a new time.
 
 <CodeBlocks>
 ```python title="Python"
@@ -286,7 +286,7 @@ agentmail inboxes:drafts list \
 
 ### Conditional Follow-Ups
 
-A common pattern is "send a follow-up in 3 days, but only if they haven't replied." You can implement this by scheduling a follow-up `Draft`, then cancelling it via `Webhook` if a reply arrives.
+A common pattern is: "Send a follow-up in 3 days, but only if they haven't replied." You can implement this by scheduling a follow-up `Draft`, then canceling it via `Webhook` if a reply arrives.
 
 **1. Send the initial email and schedule the follow-up:**
 
@@ -416,11 +416,11 @@ for (const label of thread.labels) {
 ```
 </CodeBlocks>
 
-If the prospect replies, the follow-up is cancelled. If they don't, it sends automatically at the scheduled time.
+If the prospect replies, the follow-up is canceled. If they don't, it sends automatically at the scheduled time.
 
 ## Org-Wide `Draft` Management
 
-Similar to `Threads`, you can list all `Drafts` across your entire `Organization`. This is perfect for building a central dashboard where a human supervisor can view, approve, or delete any `Draft` created by any agent in your fleet.
+Similar to `Threads`, you can list all `Drafts` across your entire `Organization`. This is perfect for building a central dashboard where a human supervisor can view, approve, or delete any `Draft` created by an agent in your fleet.
 
 <CodeBlocks>
 ```python title="Python"
