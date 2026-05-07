@@ -7,13 +7,13 @@ description: Learn how to send files as attachments, and download incoming attac
 
 ## What Are `Attachments`?
 
-An `Attachment` is a file that is associated with a `Message`. This can be anything from a PDF invoice to a CSV report or an image(though we don't recommend sending images in the first email sent. We go more into this in the [deliverability section](/email-deliverability)). Your agents can both send `Attachments` in outgoing `Messages` and process `Attachments` from incoming `Messages`.
+An `Attachment` is a file that is associated with a `Message`. This can be anything from a PDF invoice to a CSV report or an image. (Although, we don't recommend sending images in the first email sent. We go more into this in the [deliverability section](/email-deliverability).) Your agents can both send `Attachments` in outgoing `Messages` and process `Attachments` from incoming `Messages`.
 
 ## Sending `Attachments`
 
 To send a file, you include it in an `Attachments` array when sending a `Message`. Each object in the array represents one file and must have a `content` property.
 
-- **`content`** (required): The Base64 encoded content of your file.
+- **`content`** (required): The Base64-encoded content of your file.
 - **`filename`** (optional): The name of the file (e.g., `invoice.pdf`).
 - **`content_type`** (optional): The MIME type of the file (e.g., `application/pdf`).
 
@@ -83,7 +83,7 @@ The API response for getting an attachment is the raw file itself, which you can
 
 ### From a Specific `Message`
 
-If you know the `Message` an `Attachment` belongs to, you can retrieve it directly.
+If you know the `Message` that an `Attachment` belongs to, you can retrieve it directly.
 
 <CodeBlocks>
 ```python
@@ -133,7 +133,7 @@ agentmail inboxes:messages get-attachment \
 
 ### From a Specific `Thread`
 
-Similarly, you can retrieve an `Attachment` if you know the `Thread` it's in, which can be more convenient for multi-message conversations.
+Similarly, you can retrieve an `Attachment` if you know which `Thread` it's in, which can be more convenient for multi-message conversations.
 
 <CodeBlocks>
 ```python
